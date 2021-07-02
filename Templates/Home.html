@@ -1,0 +1,347 @@
+{% load static %}
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+
+    <script src="{% static 'jquery.js' %}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'DiabetesPrediction/Bootstrap/bootstrap.min.css' %}">
+
+   <title>predico</title>
+
+   <link rel="stylesheet" href="{% static 'DiabetesPrediction/Bootstrap/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'DiabetesPrediction/css/css.css' %}">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style type = text/css>
+
+    h1{
+        color:black;
+        font-family:arial, sans-serif;
+        font-size:20px;
+        font-weight:bold;
+        margin-top:20px;
+        text-align:center
+    }
+       body{
+        background-image:url("{% static 'DiabetesPrediction/images/old.jpg'%}");
+        background-repeat:no-repeat;
+        background-size:cover;
+         height: 100%;
+          background-position: center;
+
+
+        }
+    input[type=submit]{
+        background-color:black;
+        border:1px;
+        color:white;
+        padding:16px 20px;
+        cursor:pointer;
+        margin-top:10px;
+    }
+
+.navbar
+{
+
+margin-bottom: 0;
+    background-color: #f4511e;
+    z-index: 9999;
+    border: 0;
+    font-size: 18px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+    height:80px;
+
+}
+
+.collapse navbar-collapse{
+ color::#3A3B3C;
+}
+
+.navbar-brand{
+
+  font-family: arial, sans-serif;
+   font-size:25px ;
+   color:bold black;
+
+}
+
+
+.carousel-inner img{
+width:100px;
+height:500px;
+
+}
+
+
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Bottom left text */
+.top-left {
+   position: absolute;
+  top: 8px;
+  left: 30px;
+  color:#F3F2ED;
+  font-size:40px;
+   font-family: 'Brush Script MT', cursive;
+
+}
+h3{
+font-size:15px;
+  font-family:arial, sans-serif;
+}
+
+.container-fluid {
+    padding: 60px 50px;
+
+    }
+
+ .bg-grey {
+    background-color: #f6f6f6;
+  }
+
+ h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+    align:center;
+  }
+
+
+.slideanim {visibility:hidden;}
+  .slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+  }
+  @keyframes slide {
+    0% {
+      opacity: 0;
+      transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+  @-webkit-keyframes slide {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(70%);
+    }
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0%);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+    .btn-lg {
+      width: 100%;
+      margin-bottom: 35px;
+    }
+  }
+
+    </style>
+
+
+
+</head>
+
+<body>
+ <nav class="navbar navbar-expand-lg bg-light navbar-light fixed-top "   >
+              <a class="navbar-brand" href="home">PREDICO<br>
+                 <h3>Be Your Own DOCTOR...!!!</h3> </a>
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item">
+                          <a class="nav-link" href="#about">About</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="contact">Contact</a>
+                      </li>
+
+       {% if user.is_authenticated %}
+                      <li class="nav-item ml-2">
+                      <li class="nav-link" href="" style="color: black;">Hello,{{user.username}}</li>
+                      </li>
+                      <li class="nav-item ml-2">
+                          <a class="nav-link btn btn-dark " href="logout" style="color:white;">Logout</a>
+                      </li>
+               {% else %}
+
+                       <li class="nav-item active ml-2">
+                          <a class="nav-link" href="register" >Register</a>
+                       </li>
+
+
+                       <li class="nav-item active ml-2">
+                          <a class="nav-link" href="login" >Login</a>
+                       </li>
+
+       {% endif %}
+
+
+                  </ul>
+              </div>
+          </nav>
+
+ <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{% static 'DiabetesPrediction/images/img4.jpg'%}" alt="First slide">
+          <div class="top-left"></div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'DiabetesPrediction/images/diabetes.jpeg'%}" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{% static 'DiabetesPrediction/images/img.jpg'%}" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+ <div class="jumbotron">
+    <h1 class="display-4">Be your own doctor...</h1>
+    <p class="lead">
+           Health is the biggest wealth. It helps us to enjoy all the little things in life.
+        If one is not healthy, they fail to feel happy. Being unhappy can impact the health of people around us too.
+        In order to be truly healthy, one must eat well, sleep on time and wake up early. Staying fit by exercising daily
+        also helps to keep one’s health in proper check. If you are in good health, you can always work to attain more wealth.
+        But if one is not healthy, then wealth is of no importance. Hence, we should adopt and work towards a healthy lifestyle
+    </p>
+
+ <!-- Disease Button-->
+ <div align="center">
+          {% if user.is_authenticated %}
+          <form action="checkdisease ">
+              <input type="submit" value="checkdisease">
+
+              {% else %}
+               <input type="submit" onclick=alert("LoginFirst...!!!") value="checkdisease">
+               {% endif %}
+              </form>
+ </div>
+
+<!-- Container (About Section) -->
+ <div id="about" class="jumbotron">
+    <h1 class="display-4">About System</h1>
+    <p class="lead">
+          It might have happened so many times that you or someone yours need doctor’s help immediately,
+             but they are not available due to some reasons.The Disease Prediction system is an end user
+              support and online consultation project. Here, we propose a web application that allow users
+              to get instant guidance on their disease through an intelligent system. The application is
+              fed with various details and the disease associated with those details.The application allows
+               user to share their disease related issues.It then processes user specific details to check
+               for various illness that could be associated with it.
+                Based on result, patient can contact doctor accordingly for further treatment.
+    </p>
+
+ </div>
+ </div>
+
+ <footer>
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center text-black-50 py-3">© 2021 Copyright:
+    <a class="dark-grey-text" href="http://127.0.0.1:8000/"> Predico.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+  <script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='Home']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>
+
+

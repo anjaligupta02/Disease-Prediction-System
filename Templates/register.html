@@ -1,0 +1,188 @@
+{% load static %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>User registration</title>
+  <style>
+  $font-family:"Roboto";
+  $font-size: 14px;
+  $color-primary: #ABA194;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    background-image:url("{% static 'DiabetesPrediction/images/register.jpg'%}");
+    background-repeat:no-repeat;
+    background attachment:fixed;
+    background-size:cover;
+    width: 100%;
+        height: auto;
+}
+
+.user {
+    width: 90%;
+    max-width: 340px;
+    margin: 10vh auto;
+    margin-top:10px;
+}
+
+.user__header {
+    text-align: center;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.7s forwards;
+}
+
+.user__title {
+    font-size: $font-size;
+    margin-bottom: -10px;
+    font-weight: 500;
+    color: black;
+}
+
+.register {
+    margin-top: 40px;
+    border-radius: 6px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate3d(0, 500px, 0);
+    animation: arrive 500ms ease-in-out 0.9s forwards;
+}
+
+.form--no {
+    animation: NO 1s ease-in-out;
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    transition: 0.3s;
+
+    &:focus {
+        background: darken(#fff, 3%);
+    }
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    font-family: $font-family;
+    -webkit-appearance: none;
+    outline: 0;
+    border: 0;
+    color: white;
+    background: $color-primary;
+    transition: 0.3s;
+    background-color:black;
+
+    &:hover {
+        background: darken($color-primary, 5%);
+    }
+}
+
+@keyframes NO {
+  from, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translate3d(-10px, 0, 0);
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+@keyframes arrive {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 50px, 0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0
+    }
+
+    50% {
+        background-position: 100% 0
+    }
+
+    100% {
+        background-position: 0 0
+    }
+}
+
+
+  </style>
+</head>
+<body>
+<div class="user">
+    <header class="user__header">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3219/logo.svg" alt="" />
+        <h1 class="user__title">Welcome<br>
+                              We hope your Fine...
+        </h1>
+    </header>
+
+    <form class="register" method="post">
+        {% csrf_token %}
+        <div class="form__group">
+            <input type="text" name="username" placeholder="Username" class="form__input" required/>
+        </div>
+
+        <div class="form__group">
+            <input type="text" name="first_name" placeholder="Firstname" class="form__input" required/>
+        </div>
+
+        <div class="form__group">
+            <input type="text" name="last_name" placeholder="Lastname" class="form__input" required/>
+        </div>
+
+        <div class="form__group">
+            <input type="email" name="email" placeholder="Email" class="form__input" required/>
+        </div>
+
+        <div class="form__group">
+            <input type="password" name="password" placeholder="Password" class="form__input" required/>
+        </div>
+
+
+        <button class="btn" type="submit" value="">Register</button>
+    <p>Already have an account? <a href="login">Login</a></p>
+  </div>
+
+
+    </form>
+    <div>
+    {% for message in messages%}
+    <h2>{{message}}</h2>
+    {% endfor %}
+        </div>
+</div>
+</body>
+</html>

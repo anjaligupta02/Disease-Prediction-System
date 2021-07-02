@@ -1,0 +1,476 @@
+
+{% load static %}
+
+<html xmlns="http://www.w3.org/1999/html">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <head>
+      <link rel="stylesheet" href="{% static 'DiabetesPrediction/static/DiabetesPrediction/css/css.css' %}">
+     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+     <script src="{% static 'DiabetesPrediction/static/DiabetesPrediction/jquery.js' %}"></script>
+
+
+      <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+     <link rel="stylesheet" href="{% static 'DiabetesPrediction/static/DiabetesPrediction/Bootstrap/bootstrap.min.css' %}">
+
+
+     <style>
+
+     body{
+
+    background-image:url("{% static 'DiabetesPrediction/images/gray.jpg'%}");
+    background-repeat:no-repeat;
+        background attachment:fixed;
+        background-size:cover;
+        width: 100%;
+        height: auto;
+     }
+
+ h2{
+  color:black;
+
+ }
+ h3{
+ color:black;
+        font-family:arial, sans-serif;
+        font-size:25px;
+        font-weight:bold;
+        margin-top:20px;
+        text-align:center
+ }
+
+  #predict{
+    position: static;
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+
+}
+
+#predicted-data{
+  margin-top: 5% !important;
+  width: 40%;
+  background:rgba(3, 169, 244, 0.48);
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  text-shadow: -5px 5px 6px white;
+  box-shadow: 3px 1px 3px 0px #607D8B;
+  display:inline-block;
+
+}
+
+#inputsym{
+
+   position: fixed;
+   right: 100px;
+}
+
+.symptoms{
+  border:ridge rgb(150, 177, 199);
+  margin: 2px;
+  display: block ;
+  text-align: center;
+  padding: 0px !important;
+
+  background-color: #fdffff;
+  text-shadow: 0px 1px 20px rgba(3, 169, 244, 0.78);
+  box-shadow: 0px 8px 16px 0px rgba(78, 191, 243, 0.05);
+
+}
+
+#symptoms-box{
+position: static;
+margin-top: 5%;
+margin-left: 20%;
+margin-right: 20%;
+text-align: center;
+
+background-color: #e9ecef !important;
+min-height: 300px;
+
+padding: 10px 10px 10px 10px;
+
+}
+
+.card-body{
+  margin-left: auto ;
+  margin-right: auto ;
+
+
+}
+/*  ------------------------------------------------------------*/
+/* Dropdown Button */
+ .dropbtn {
+    position: relative;
+    left:50%;
+    width: 150px;
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Dropdown button on hover & focus */
+  .dropbtn:hover, .dropbtn:focus {
+    background-color: #2980B9;
+  }
+
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    left:40%;
+
+  }
+  #container-dropdown{
+
+
+    min-width: 1130px;
+    min-height: 200px;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .drop-content {
+    left:10%;
+    right: 10%;
+    display: none;
+    background-color: #fdffff;
+
+    text-shadow: 0px 1px 20px rgb(7, 97, 231);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+  }
+
+
+.dropdown-item {
+  position: relative;
+  min-width: 100px ;
+  text-align: center !important;
+  width: auto !important;
+  display:inline-block ;
+  cursor: pointer;
+
+  clear: both;
+  text-align: center;
+  border: 0;
+
+  margin: 10px !important;
+
+  background-color: #fdffff;
+  text-shadow: 0px 1px 20px rgba(3, 169, 244, 0.78);
+  box-shadow: 0px 8px 16px 0px rgba(3, 169, 244, 0.05);
+
+  line-height: 2;
+  padding: 4px !important;
+
+}
+
+  /* Links inside the dropdown
+  .dropdown-content a {
+
+  }*/
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: rgb(90, 181, 241);
+  }
+
+
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container
+   when the user clicks on the dropdown button) */
+  .show {display:inline-block;}
+
+
+  #searchbar{
+    margin-left: 25%;
+    padding:10px;
+    border-radius: 10px;
+
+    width: 30%;
+}
+
+  #searchbardiv{
+    padding:10px;
+
+  }
+
+
+  .navbar
+{
+
+margin-bottom: 0;
+    background-color: #f4511e;
+    z-index: 9999;
+    border: 0;
+    font-size: 18px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+    height:80px;
+    color:white;
+
+}
+
+
+</style>
+
+
+     <script>
+ /* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function Functionshow() {
+
+  document.getElementById("searchbar").value = '';
+  document.getElementById("myDropdown").classList.toggle("show");
+   search_symptoms();
+
+}
+
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.btn')) {
+    if (!event.target.matches('.searchbardiv')){
+      if (!event.target.matches('.searchbar')){
+
+    var dropdowns = document.getElementsByClassName("drop-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+}
+}
+
+  function Functionsymptoms(name) {
+    var newItem = document.createElement("TEXTAREA");
+    newItem.innerText = name;
+    newItem.setAttribute("id","symptoms");
+
+    newItem.setAttribute("class","symptoms");
+    document.getElementById("sympbox").appendChild(newItem);
+
+  }
+
+
+  //var elements = document.getElementsByClassName("symptoms");
+
+
+  function search_symptoms() {
+    let input = document.getElementById('searchbar').value
+    input=input.toLowerCase();
+    let x = document.getElementsByClassName('dropdown-item');
+
+    for (i = 0; i < x.length; i++) {
+        if (!x[i].innerHTML.toLowerCase().includes(input)) {
+            x[i].style.display="none";
+        }
+        else {
+            x[i].style.display="inline-block";
+        }
+    }
+}
+
+
+$(document).ready( function(){
+
+
+$("#predict").click(function () {
+  event.preventDefault();
+
+  var symptoms = document.getElementsByClassName("symptoms");
+  var noofsym = symptoms.length;
+  var symlist=[];
+
+  if(noofsym == 0){
+     alert(" please add some symptoms ");
+  }
+
+  else {
+
+  for(i=0;i<symptoms.length;i++){
+    symlist[i]=symptoms[i].value;
+  }
+
+
+
+  $("#resultdiv").show("slow");
+  $('html,body').animate({
+    scrollTop: $("#resultdiv").offset().top},
+    'slow');
+
+  $.ajax({
+      url: 'checkdisease',
+      type: "POST",
+      data: { "noofsym" : noofsym,
+              "symptoms" :symlist,
+              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+               action: 'post'
+      },
+      dataType: 'json',
+
+     success: function (data) {
+        document.getElementById('diseasefield').innerText = data["predicteddisease"];
+        document.getElementById('percentage').innerText = data["confidencescore"]+"%";
+        percent=data["confidencescore"];
+        disease=data["predicteddisease"];
+
+       $('#percentage').css('width', percent + "%");
+
+        document.getElementById('diseasesearch').innerText = data["predicteddisease"];
+
+          $("#href").attr("href","https://www.google.com/search?q="+ disease +"");
+        document.getElementById('consultdoctor').innerText = data["consultdoctor"];
+
+      }
+
+    });
+
+  }
+
+  });
+});
+</script>
+
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top "   >
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                      <li class="nav-item " style="color:white;">
+                          <a class="nav-link" href="home">Back To Home Page</a>
+                      </li>
+                  </ul>
+              </div>
+</nav>
+<br><br><br>
+<div class="container">
+  <div class="container">
+    <br>
+    <div class="text-center">
+      <h3>
+          Identify possible conditions and treatment related to your symptoms.
+      </h3><br>
+            <button onclick="Functionshow()" class="btn btn-primary dropdown-toggle">Add symptoms</button>
+    </div>
+  </div >
+
+  <div id="myDropdown" class="drop-content">
+
+        <div id="searchbardiv" class="searchbardiv">
+
+            <input id="searchbar" class="searchbar" onkeyup="search_symptoms()" type="text"
+              name="search" placeholder=" Search symptoms.. "> <br>
+        </div>
+
+        <div class="container" id="container-dropdown">
+            {% for i in list2 %}
+
+            <a class="dropdown-item" onclick="Functionsymptoms(this.textContent)">{{i}}</a>
+
+            {% endfor %}
+        </div>
+  </div>
+
+<br><br>
+  <div class="text-center">
+        <div class="card" id= "symptoms-box">
+
+      {% csrf_token %}
+            <div class="card-header">Symptoms list -</div>
+                    <div class="card-body" id="sympbox" >
+                    </div>
+                          <br>
+                          <div class="card-footer">
+                                <button id="predict" class="btn btn-success">Predict</button>
+                          </div>
+             </div>
+        </div>
+  </div>
+
+  <br>
+
+  <div id="resultdiv" style="display: none;" >
+        <div class="text-center">
+              <div class="card" id="predicted-data">
+                  <div>
+                            <span class="diseasefield" style="color:white font-size:10px;" >Patient name :  {{user.username}}</span>
+                    </div>
+                  <br>
+                    <span class="diseasefield" >predicted disease is : </span><span class="diseasefield" id="diseasefield" style="color: #092700; text-shadow: 2px 2px 4px rgb(36, 255, 45);"></span> <br>
+                    <br>
+                    <span class="diseasefield">confidence score of :  </span>
+                    <span>
+                          <div class="progress" style="display: inline-block;width:140px">
+                              <div id="percentage" class="progress-bar" style="width: 0%">0%
+                              </div>
+                          </div>
+                    </span>
+
+                    </div>
+              </div><br>
+       <div class="text-center mt-4 mb-4">
+              <button class="btn btn-outline-dark " style="color:white;">
+                    <a id="href" href="https://www.google.com/search?q=" target="_blank" rel="noopener noreferrer">Click here to know more about &nbsp
+                    <span id="diseasesearch" style="color: crimson;"></span></a>
+              </button>
+        </div>
+          <br><br>
+
+        <div class="text-center">
+          <h4>This tool does not provide medical advice. It is intended for informational purposes only.
+          </h4><h4>It is not a substitute for professional medical advice, diagnosis or treatment.
+          </h4>
+        <br><br>
+
+        </div>
+</form>
+
+
+<!--<div class="mx-auto text-center " style="width:350px">
+
+
+        <div >  <form action="consult_a_doctor" method="GET">
+            {% csrf_token %}
+            <button id="consultbtn" type="submit" class="btn btn-primary">Stay 'Safe' and Healthy Life</button>
+          </form>
+        </div>-->
+
+
+</div>
+
+</div>
+
+
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+     <script src="{% static 'DiabetesPrediction/static/DiabetesPrediction/jquery/jquery-3.2.1.min.js' %}"></script>
+
+<script src="{% static 'DiabetesPrediction/static/DiabetesPrediction/jquery/main.js' %}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+</body>
+</html>>

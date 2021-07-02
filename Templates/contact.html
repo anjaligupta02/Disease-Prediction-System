@@ -1,0 +1,40 @@
+{% load static %}
+<html>
+<head>
+    <style>
+
+        .form-actions{
+
+
+        }
+h1{
+        color:black;
+        font-family:arial, sans-serif;
+        font-size:30px;
+        font-weight:bold;
+        margin-top:50px;
+        text-align:center
+    }
+       body{
+        background-image:url("{% static 'DiabetesPrediction/images/old.jpg'%}");
+        background-repeat:no-repeat;
+        background-size:cover;
+         height: 100%;
+          background-position: center;
+}
+    </style>
+</head>
+<body>
+          <h1>Contact Us</h1>
+<form method="post">
+    {% csrf_token %}
+      <center>
+    {{ form.as_p }}
+    <div class="form-actions">
+      <button type="submit">Send</button>
+    </div>
+           </center>
+
+</form>
+</body>
+</html>

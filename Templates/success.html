@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>contact Success</title>
+
+    <link rel="stylesheet" href="{% static 'DiabetesPrediction/static/DiabetesPrediction/css/css.css' %}">
+     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+     <script src="{% static 'DiabetesPrediction/static/DiabetesPrediction/jquery.js' %}"></script>
+
+
+      <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+     <link rel="stylesheet" href="{% static 'DiabetesPrediction/static/DiabetesPrediction/Bootstrap/bootstrap.min.css' %}">
+
+
+            <style>
+h1{
+        color:black;
+        font-family:arial, sans-serif;
+        font-size:30px;
+        font-weight:bold;
+        margin-top:50px;
+        text-align:center
+    }
+       body{
+        background-image:url("{% static 'DiabetesPrediction/images/old.jpg'%}");
+        background-repeat:no-repeat;
+        background-size:cover;
+         height: 100%;
+          background-position: center;
+}
+</style>
+
+</head>
+<body>
+<h1>
+    <center>
+    Thank you! Will get in touch soon.
+    </center>
+    <br><br><br><br>
+
+     <form action="home" method="GET">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-dark">Back</button>
+          </form>
+
+</h1>
+</body>
+</html>
